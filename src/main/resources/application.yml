@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: ws-chat
+              uri: http://localhost:31073
+              predicates:
+                - Path=/ws-chat/**
+              filters:
+                - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+
+jwt:
+  secret: IAMSOMEONE
