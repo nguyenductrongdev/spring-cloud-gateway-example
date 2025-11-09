@@ -24,7 +24,7 @@ public class JwtAuthFilter implements GlobalFilter {
 
         try {
             String beaverToken = exchange.getRequest().getHeaders().getFirst("Authorization");
-            String jwtToken = beaverToken.replace("Beaver ", "");
+            String jwtToken = beaverToken.replace("Bearer ", "");
 
             Claims claims = Jwts.parser()
                     .setSigningKey(secret)

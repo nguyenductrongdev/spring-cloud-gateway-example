@@ -6,6 +6,15 @@ spring:
     gateway:
       server:
         webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins:
+                  - 'http://127.0.0.1:5500'
+                allowedMethods:
+                  - '*'
+                allowedHeaders:
+                  - '*'
           routes:
             - id: ws-chat
               uri: http://localhost:31073
